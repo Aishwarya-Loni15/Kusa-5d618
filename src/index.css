@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    background-color: #0b0c16;
+  }
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+/* Custom Noise Texture */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism Panel Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 18, 35, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Candle Flame Flicker Keyframe */
+@keyframes flameFlicker {
+  0%, 100% { transform: scale(1) rotate(-1deg); opacity: 1; }
+  25% { transform: scale(1.1) rotate(1deg); opacity: 0.9; }
+  50% { transform: scale(0.95) rotate(-2deg); opacity: 1; }
+  75% { transform: scale(1.05) rotate(2deg); opacity: 0.85; }
+}
+
+.animate-flicker {
+  animation: flameFlicker 1.5s ease-in-out infinite alternate;
+}
+
+/* Candle Smoke Animation */
+.smoke {
+  position: absolute;
+  width: 4px;
+  height: 25px;
+  background: rgba(200, 200, 200, 0.6);
+  border-radius: 50%;
+  filter: blur(3px);
+  animation: smokeRise 2.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes smokeRise {
+  0% { opacity: 0.8; transform: translateY(0) scaleX(1); }
+  50% { opacity: 0.5; transform: translateY(-20px) scaleX(2) rotate(10deg); }
+  100% { opacity: 0; transform: translateY(-45px) scaleX(4) rotate(-15deg); }
+}
+
+/* 3D Perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
